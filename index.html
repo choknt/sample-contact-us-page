@@ -18,23 +18,48 @@
     <link rel="shortcut icon" href="./static/img/codecell_logo.svg" type="image/x-icon" sizes="any">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
-        <div class="title">Welcome to GOS Partners</div>
-        <div class="title-info">Your go-to place for collaboration.</div>
-    </main>
+        <div class="title">Contact us</div>
+        <div class="title-info">We'll get back to you soon!</div>
 
-    <footer>
-        <p>&copy; 2024 GOS Partners</p>
-    </footer>
+        <form action="https://formspree.io/f/mjkbvrqr" method="POST" class="form">
+            <div class="input-group">
+                <input type="text" name="first_name" id="first-name" placeholder="First name">
+                <label for="first-name">First name</label>
+            </div>
+
+            <div class="input-group">
+                <input type="text" name="last_name" id="last-name" placeholder="Last Name">
+                <label for="last-name">Last name</label>
+            </div>
+
+            <div class="input-group">
+                <input type="email" name="e-mail" id="e-mail" placeholder="e-mail">
+                <label for="e-mail">e-mail</label>
+            </div>
+
+            <div class="textarea-group">
+                <textarea name="message" id="message" rows="5" placeholder="Message"></textarea>
+                <label for="message">Message</label>
+            </div>
+
+            <div class="button-div">
+                <button type="submit">Send</button>
+            </div>
+        </form>
+        
+        <script>
+            window.fwSettings = {
+                'widget_id': 153000000325
+            };
+            !function() {
+                if ("function" != typeof window.FreshworksWidget) {
+                    var n = function() { n.q.push(arguments) };
+                    n.q = [], window.FreshworksWidget = n
+                }
+            }()
+        </script>
+        <script type='text/javascript' src='https://widget.freshworks.com/widgets/153000000325.js' async defer></script>
+    </main>
 </body>
 </html>
