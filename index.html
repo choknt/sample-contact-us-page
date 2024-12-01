@@ -26,31 +26,62 @@
 </main>
 
 
-        <form action="https://formspree.io/f/mjkbvrqr" method="POST" class="form">
-            <div class="input-group">
-                <input type="text" name="name" id="name" placeholder="name">
-                <label for="name">name</label>
-            </div>
+        <form id="contactForm" class="form">
+    <div class="input-group">
+        <input type="text" name="name" id="name" placeholder="name" required>
+        <label for="name">name</label>
+    </div>
 
-            <div class="input-group">
-                <input type="text" name="How many people are in the clan?" id="people" placeholder="How many people are in the clan">
-                <label for="people">How many people are in the clan</label>
-            </div>
+    <div class="input-group">
+        <input type="text" name="people" id="people" placeholder="How many people are in the clan?" required>
+        <label for="people">How many people are in the clan?</label>
+    </div>
 
-            <div class="input-group">
-                <input type="email" name="e-mail" id="e-mail" placeholder="e-mail">
-                <label for="e-mail">e-mail</label>
-            </div>
+    <div class="input-group">
+        <input type="email" name="email" id="email" placeholder="e-mail" required>
+        <label for="email">e-mail</label>
+    </div>
 
-            <div class="textarea-group">
-                <textarea name="message" id="message" rows="5" placeholder="Message"></textarea>
-                <label for="message">Message</label>
-            </div>
+    <div class="textarea-group">
+        <textarea name="message" id="message" rows="5" placeholder="Message"></textarea>
+        <label for="message">Message</label>
+    </div>
 
-            <div class="button-div">
-                <button type="submit">Send</button>
-            </div>
-        </form>
+    <div class="button-div">
+        <button type="submit">Send</button>
+    </div>
+</form>
+
+<div id="confirmationMessage" style="display:none;">
+    <p>Thank you for your submission!</p>
+</div>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // ป้องกันการโหลดหน้าใหม่
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch("https://formspree.io/f/mjkbvrqr", {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                form.style.display = "none"; // ซ่อนฟอร์มเมื่อส่งสำเร็จ
+                document.getElementById("confirmationMessage").style.display = "block"; // แสดงข้อความยืนยัน
+            } else {
+                alert("There was a problem submitting the form.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("There was an error submitting the form.");
+        });
+    });
+            </script>
         
         <script>
             window.fwSettings = {
